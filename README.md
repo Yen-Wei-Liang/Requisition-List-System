@@ -8,7 +8,9 @@
 * Tkinter函式庫
 
 ## 三、功能示意
-![image](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmU3ZjMxNDZhNWZlOGQxYWY5NjY0ODc4NjY4ODBkMTA4ODViZDhlMSZjdD1n/vqTvw73XyaiwWLblfo/giphy.gif)
+![UI介面](https://i.imgur.com/QgsDOig.png)
+![防呆輸入](https://i.imgur.com/WENq7AX.png)
+![Excel生成](https://i.imgur.com/osfEP4c.png)
 
 ## 四、使用方法
 
