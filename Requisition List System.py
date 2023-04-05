@@ -6,6 +6,7 @@ Description: This program is used for recording the status of material collectio
 
 """
 
+
 #===================================================================================
 # Use of the library
 #===================================================================================
@@ -355,6 +356,12 @@ def search():
             messagebox.showerror("Invalid", "Invalid registeration number!!!")
             return
 
+#     try:
+#         print(str(num))
+#     except:
+# #         num = None
+#         messagebox.showerror("Invalid", "Invalid registeration number!!!")
+
     if reg_number is not None:    
         x1 = sheet.cell(row=int(reg_number), column=1).value # lab
         x2 = sheet.cell(row=int(reg_number), column=2).value # ID
@@ -421,20 +428,14 @@ else:
 #===================================================================================
 
 Label(root, text="Email:49937019@stust.edu.tw", width = 10, height=3, bg="#f0687c", anchor='e').pack(side = TOP,fill=X)
-Label(root, text="Search for Student ID", width = 10, height=2, bg="#c36464", fg = '#fff', font ='SimSun 15 bold').pack(side = TOP,fill=X)
+Label(root, text="Search for Student ID", width = 10, height=2, bg="#c36464", fg = '#fff', font ='arial 11 bold').pack(side = TOP,fill=X)
 
+search_var = StringVar() 
+search_entry = Entry(root, textvariable=search_var, width=10, bd=2, font="arial 13")
+search_entry.place(x=620, y=58)
 
-
-# Srch = Button(root, text="Search", compound=LEFT, width=8, bg='#68ddfa', font='SimSun 11 bold',command=Search)
-# Srch.place(x=780,y=63)
-#
-
-search_var = StringVar()  # create a separate StringVar variable for the Entry widget
-search_entry = Entry(root, textvariable=search_var, width=15, bd=2, font="SimSun 11 bold")
-search_entry.place(x=600, y=65)
-
-srch = Button(root, text="Search", compound=LEFT, width=8, bg='#68ddfa', font='SimSun 11 bold', command=search)
-srch.place(x=780, y=63)
+srch = Button(root, text="Search", compound=LEFT, width=8, bg='#68ddfa', font='arial 13 bold', command=search)
+srch.place(x=800, y=58)   #63
 
 #===================================================================================
 # Left UI frame
@@ -442,21 +443,20 @@ srch.place(x=780, y=63)
 
 f= Frame(root, bd=3,bg="black", width=150,height=150,relief=GROOVE)
 f.place(x=15,y=130)
-# img = PhotoImage(file=r"C:\Users\William\Desktop\Project\kdd.png")
 img = PhotoImage(file="kdd.png")
 lbl = Label(f, bg="black", image=img)
 lbl.place(x=0, y=0)
 
 
 
-UploadButton =Button(root, text="Upload", width=16, height=2, font="SimSun 12 bold",bg="lightblue", command= showimage)
+UploadButton =Button(root, text="Upload", width=14, height=2, font="arial 12 bold",bg="lightblue", command= showimage)
 UploadButton.place(x=15, y=300)
 
-SaveButton = Button(root, text="Save", width=16, height=2, font="SimSun 12 bold",bg="lightgreen", command= Save)
+SaveButton = Button(root, text="Save", width=14, height=2, font="arial 12 bold",bg="lightgreen", command= Save)
 SaveButton.place(x=15, y=360)
 
-Button(root, text="Reset", width=16, height=2, font="SimSun 12 bold",bg="lightpink", command= Reset).place(x=15, y=420)
-Button(root, text="Exit", width=16, height=2, font="SimSun 12 bold",bg="grey", command= Exit).place(x=15, y=480)
+Button(root, text="Reset", width=14, height=2, font="arial 12 bold",bg="lightpink", command= Reset).place(x=15, y=420)
+Button(root, text="Exit", width=14, height=2, font="arial 12 bold",bg="grey", command= Exit).place(x=15, y=480)
 
 
 
@@ -465,46 +465,46 @@ Button(root, text="Exit", width=16, height=2, font="SimSun 12 bold",bg="grey", c
 #===================================================================================
 
 # background
-obj = LabelFrame(root, text="Student's Details", font=20,bd=2,width=700, bg=framebg, fg=framefg, height=130, relief=GROOVE).place(x=200,y=130)
+obj = LabelFrame(root, text="Student's Details", font= "arial 10",bd=2,width=700, bg=framebg, fg=framefg, height=130, relief=GROOVE).place(x=200,y=130)
 
 #left label
-Label(obj, text="Lab:", font="SimSun 11", bg = framebg, fg = framefg).place(x=250, y=160)
-Label(obj, text="Student ID:", font="SimSun 11", bg = framebg, fg = framefg).place(x=250, y=190)
-Label(obj, text="Name:", font="SimSun 11", bg = framebg , fg=framefg).place(x=250, y=220)
+Label(obj, text="Lab:", font="arial 11", bg = framebg, fg = framefg).place(x=250, y=160)
+Label(obj, text="Student ID:", font="arial 11", bg = framebg, fg = framefg).place(x=250, y=190)
+Label(obj, text="Name:", font="arial 11", bg = framebg , fg=framefg).place(x=250, y=220)
 
 #right label
-Label(obj, text="Line:", font="SimSun 11", bg = framebg , fg=framefg).place(x=580, y=160)
-Label(obj, text="E-mail:", font="SimSun 11", bg = framebg , fg=framefg).place(x=580, y=190)
-Label(obj, text="Telephone:", font="SimSun 11", bg = framebg , fg=framefg).place(x=580, y=220)
+Label(obj, text="Line:", font="arial 11", bg = framebg , fg=framefg).place(x=580, y=160)
+Label(obj, text="E-mail:", font="arial 11", bg = framebg , fg=framefg).place(x=580, y=190)
+Label(obj, text="Telephone:", font="arial 11", bg = framebg , fg=framefg).place(x=580, y=220)
 
 
 #left input box
 Lab = StringVar()
-Lab_entry = Entry(obj, textvariable = Lab, width=15, font="SimSun 11")
+Lab_entry = Entry(obj, textvariable = Lab, width=15, font="arial 11")
 Lab_entry.place(x=350, y=160)
 
 
 Student_ID = StringVar()
-Student_ID_entry = Entry(obj, textvariable = Student_ID, width=15, font="SimSun 11")
+Student_ID_entry = Entry(obj, textvariable = Student_ID, width=15, font="arial 11")
 Student_ID_entry.place(x=350, y=190)
 
 
 Name = StringVar()
-Name_entry = Entry(obj, textvariable = Name, width=15, font="SimSun 11")
+Name_entry = Entry(obj, textvariable = Name, width=15, font="arial 11")
 Name_entry.place(x=350, y=220)
 
 
 #right input box
 Line = StringVar()
-Line_entry = Entry(obj, textvariable = Line, width=15, font="SimSun 11")
+Line_entry = Entry(obj, textvariable = Line, width=15, font="arial 11")
 Line_entry.place(x=710, y=160)
 
 Email = StringVar()
-Email_entry = Entry(obj, textvariable = Email, width=15, font="SimSun 11")
+Email_entry = Entry(obj, textvariable = Email, width=15, font="arial 11")
 Email_entry.place(x=710, y=190)
 
 Telephone = StringVar()
-Telephone_entry = Entry(obj, textvariable = Telephone, width=15, font="SimSun 11")
+Telephone_entry = Entry(obj, textvariable = Telephone, width=15, font="arial 11")
 Telephone_entry.place(x=710, y=220)
 
 #===================================================================================
@@ -513,21 +513,21 @@ Telephone_entry.place(x=710, y=220)
 
 
 # background
-obj2 = LabelFrame(root, text="Equipment Pickup List", font=20,bd=2,width=700, bg=framebg, fg=framefg, height=265, relief=GROOVE).place(x=200,y=270)
+obj2 = LabelFrame(root, text="Equipment Pickup List", font="arial 10",bd=2,width=700, bg=framebg, fg=framefg, height=265, relief=GROOVE).place(x=200,y=270)
 
 # left label
-Label(obj2, text="1、Arduino板*2", font="SimSun 11", bg = framebg, fg = framefg).place(x=220, y=290)
-Label(obj2, text="2、Arduino電源線*2", font="SimSun 11", bg = framebg, fg = framefg).place(x=220, y=310)
-Label(obj2, text="3、Arduino擴充版", font="SimSun 11", bg = framebg , fg=framefg).place(x=220, y=330)
-Label(obj2, text="4、充電電池&盒*2", font="SimSun 11", bg = framebg, fg = framefg).place(x=220, y=350)
-Label(obj2, text="5、電池充電器*1", font="SimSun 11", bg = framebg, fg = framefg).place(x=220, y=370)
-Label(obj2, text="6、行動電源*1", font="SimSun 11", bg = framebg , fg=framefg).place(x=220, y=390)
-Label(obj2, text="7、馬達控制器*1", font="SimSun 11", bg = framebg, fg = framefg).place(x=220, y=410)
-Label(obj2, text="8、小車馬達*2", font="SimSun 11", bg = framebg, fg = framefg).place(x=220, y=430)
-Label(obj2, text="9、小車輔助輪*1", font="SimSun 11", bg = framebg , fg=framefg).place(x=220, y=450)
-Label(obj2, text="10、小車輪子*2", font="SimSun 11", bg = framebg, fg = framefg).place(x=220, y=470)
-Label(obj2, text="11、小車板子*1", font="SimSun 11", bg = framebg, fg = framefg).place(x=220, y=490)
-Label(obj2, text="12、銅柱*1包", font="SimSun 11", bg = framebg , fg=framefg).place(x=220, y=510)
+Label(obj2, text="1、Arduino板*2", font="arial 10", bg = framebg, fg = framefg).place(x=220, y=290)
+Label(obj2, text="2、Arduino電源線*2", font="arial 10", bg = framebg, fg = framefg).place(x=220, y=310)
+Label(obj2, text="3、Arduino擴充版", font="arial 10", bg = framebg , fg=framefg).place(x=220, y=330)
+Label(obj2, text="4、充電電池&盒*2", font="arial 10", bg = framebg, fg = framefg).place(x=220, y=350)
+Label(obj2, text="5、電池充電器*1", font="arial 10", bg = framebg, fg = framefg).place(x=220, y=370)
+Label(obj2, text="6、行動電源*1", font="arial 10", bg = framebg , fg=framefg).place(x=220, y=390)
+Label(obj2, text="7、馬達控制器*1", font="arial 10", bg = framebg, fg = framefg).place(x=220, y=410)
+Label(obj2, text="8、小車馬達*2", font="arial 10", bg = framebg, fg = framefg).place(x=220, y=430)
+Label(obj2, text="9、小車輔助輪*1", font="arial 10", bg = framebg , fg=framefg).place(x=220, y=450)
+Label(obj2, text="10、小車輪子*2", font="arial 10", bg = framebg, fg = framefg).place(x=220, y=470)
+Label(obj2, text="11、小車板子*1", font="arial 10", bg = framebg, fg = framefg).place(x=220, y=490)
+Label(obj2, text="12、銅柱*1包", font="arial 10", bg = framebg , fg=framefg).place(x=220, y=510)
 
 # Check button on the lift
 
@@ -566,18 +566,18 @@ R24 = Radiobutton(obj2, text="Unclaimed", variable= radio[11], value=2, bg=frame
 
 
 # right label
-Label(obj2, text="13、藍芽接收器*2", font="SimSun 11", bg = framebg, fg = framefg).place(x=545, y=290)
-Label(obj2, text="14、溫度感測器(DHT)*2", font="SimSun 11", bg = framebg, fg = framefg).place(x=545, y=310)
-Label(obj2, text="15、紅外線感測器*1", font="SimSun 11", bg = framebg , fg=framefg).place(x=545, y=330)
-Label(obj2, text="16、超音波感測器*1", font="SimSun 11", bg = framebg, fg = framefg).place(x=545, y=350)
-Label(obj2, text="17、LCD*1", font="SimSun 11", bg = framebg, fg = framefg).place(x=545, y=370)
-Label(obj2, text="18、杜邦線*1包", font="SimSun 11", bg = framebg , fg=framefg).place(x=545, y=390)
-Label(obj2, text="19、樹梅派(3or4)*1", font="SimSun 11", bg = framebg, fg = framefg).place(x=545, y=410)
-Label(obj2, text="20、記憶卡*1", font="SimSun 11", bg = framebg, fg = framefg).place(x=545, y=430)
-Label(obj2, text="21、樹梅派相機*1", font="SimSun 11", bg = framebg , fg=framefg).place(x=545, y=450)
-Label(obj2, text="22、樹梅派相機支架*1", font="SimSun 11", bg = framebg, fg = framefg).place(x=545, y=470)
-Label(obj2, text="23、樹梅派(3or4)充電線*1", font="SimSun 11", bg = framebg, fg = framefg).place(x=545, y=490)
-Label(obj2, text="24、Micro HDMI*1", font="SimSun 11", bg = framebg , fg=framefg).place(x=545, y=510)
+Label(obj2, text="13、藍芽接收器*2", font="arial 10", bg = framebg, fg = framefg).place(x=545, y=290)
+Label(obj2, text="14、溫度感測器(DHT)*2", font="arial 10", bg = framebg, fg = framefg).place(x=545, y=310)
+Label(obj2, text="15、紅外線感測器*1", font="arial 10", bg = framebg , fg=framefg).place(x=545, y=330)
+Label(obj2, text="16、超音波感測器*1", font="arial 10", bg = framebg, fg = framefg).place(x=545, y=350)
+Label(obj2, text="17、LCD*1", font="arial 10", bg = framebg, fg = framefg).place(x=545, y=370)
+Label(obj2, text="18、杜邦線*1包", font="arial 10", bg = framebg , fg=framefg).place(x=545, y=390)
+Label(obj2, text="19、樹梅派(3or4)*1", font="arial 10", bg = framebg, fg = framefg).place(x=545, y=410)
+Label(obj2, text="20、記憶卡*1", font="arial 10", bg = framebg, fg = framefg).place(x=545, y=430)
+Label(obj2, text="21、樹梅派相機*1", font="arial 10", bg = framebg , fg=framefg).place(x=545, y=450)
+Label(obj2, text="22、樹梅派相機支架*1", font="arial 10", bg = framebg, fg = framefg).place(x=545, y=470)
+Label(obj2, text="23、樹梅派(3or4)充電線*1", font="arial 10", bg = framebg, fg = framefg).place(x=545, y=490)
+Label(obj2, text="24、Micro HDMI*1", font="arial 10", bg = framebg , fg=framefg).place(x=545, y=510)
 
 # Check button on the right
 R25 = Radiobutton(obj2, text="claimed", variable= radio[12], value=1, bg=framebg, fg=framefg, command = lambda: selection(radio[12])).place(x=705, y=290)
