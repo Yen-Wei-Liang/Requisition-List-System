@@ -8,8 +8,14 @@
 * Tkinter函式庫
 
 ## 三、功能示意
+
+### *UI介面*
 ![UI介面](https://i.imgur.com/QgsDOig.png)
+
+### *防呆輸入*
 ![防呆輸入](https://i.imgur.com/WENq7AX.png)
+
+### *Excel生成*
 ![Excel生成](https://i.imgur.com/osfEP4c.png)
 
 ## 四、使用方法
