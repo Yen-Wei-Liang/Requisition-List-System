@@ -432,10 +432,10 @@ Label(root, text="Search for Student ID", width = 10, height=2, bg="#c36464", fg
 
 search_var = StringVar() 
 search_entry = Entry(root, textvariable=search_var, width=10, bd=2, font="arial 13")
-search_entry.place(x=620, y=58)
+#search_entry.place(x=620, y=58)
 
 srch = Button(root, text="Search", compound=LEFT, width=8, bg='#68ddfa', font='arial 13 bold', command=search)
-srch.place(x=800, y=58)   #63
+#srch.place(x=800, y=58)  
 
 #===================================================================================
 # Left UI frame
