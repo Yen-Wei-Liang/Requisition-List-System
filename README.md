@@ -20,9 +20,15 @@
 
 ## 四、使用方法
 
-```
+```bash=
+# Windows
 pip install -r requirements.txt
 python "Requisition List System.py"
+
+# Linux
+pip install -r requirements.txt
+python Requisition\ List\ System.py
+
 ```
 
 ## 五、未來發展
