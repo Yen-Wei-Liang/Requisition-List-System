@@ -20,7 +20,6 @@ import os
 import openpyxl, xlrd
 from openpyxl import Workbook
 import pathlib
-import tkinter as tk
 from PIL import Image, ImageTk
 
 
@@ -300,7 +299,7 @@ def Reset():
     Name.set('')
     Lab.set('')
     Student_ID.set('')
-    Search.set('')
+#     Search.set('')
     Line.set('')
     Email.set('')
     Telephone.set('')
@@ -340,18 +339,43 @@ def showimage():
 
 
 ##################################The search function has not been successful#########################################
-# def search():
-#     text = Search.get()  #從空格輸入端抓輸入
-#     Reset() #清除空格
-#     SaveButton.config(state='disable')
-#     file = openpyxl.load_workbook("Embedded Real-Time Operating System for System-on-Chip rental material list system.xlsx")
-#     sheet = file.active
-#     for row in sheet.iter_rows(values_only=True):   #min_row=2, 
-#         if row[1] == int(text):
-#         # 如果找到對應的 ID，打印出 Name 欄位的值
-#             print(row[1])
-#         else:
-#             print('error')
+def search():
+    text = search_var.get() 
+    Reset() #清除空格
+    SaveButton.config(state='disable')
+    
+    file = openpyxl.load_workbook("Embedded Real-Time Operating System for System-on-Chip rental material list system.xlsx")
+    sheet = file.active
+    
+    for row in sheet.rows: 
+        if row[1].value == str(text):
+            name = row[0]
+            reg_number = str(name)[15:-1]
+            break
+        else:
+            messagebox.showerror("Invalid", "Invalid registeration number!!!")
+            return
+
+#     try:
+#         print(str(num))
+#     except:
+# #         num = None
+#         messagebox.showerror("Invalid", "Invalid registeration number!!!")
+
+    if reg_number is not None:    
+        x1 = sheet.cell(row=int(reg_number), column=1).value # lab
+        x2 = sheet.cell(row=int(reg_number), column=2).value # ID
+        x3 = sheet.cell(row=int(reg_number), column=3).value # Name
+        x4 = sheet.cell(row=int(reg_number), column=4).value #E-mail
+        x5 = sheet.cell(row=int(reg_number), column=5).value #Telephone
+        x6 = sheet.cell(row=int(reg_number), column=6).value #Line
+    
+        Lab.set(x1)
+        Student_ID.set(x2)
+        Name.set(x3)
+        Email.set(x4)
+        Telephone.set(x5)   
+        Line.set(x6)
 ######################################################################################################################
 
 
@@ -405,11 +429,21 @@ else:
 
 Label(root, text="Email:49937019@stust.edu.tw", width = 10, height=3, bg="#f0687c", anchor='e').pack(side = TOP,fill=X)
 Label(root, text="Search for Student ID", width = 10, height=2, bg="#c36464", fg = '#fff', font ='arial 15 bold').pack(side = TOP,fill=X)
-Search = StringVar()
-Entry(root, textvariable = Search, width=15, bd=2, font="arial 13").place(x=600, y=65)
-Srch = Button(root, text="Search", compound=LEFT, width=8, bg='#68ddfa', font='arial 13 bold',command=Search).place(x=780,y=63)
 
+# Search = StringVar()
+# Search_entry = Entry(root, textvariable = Search, width=15, bd=2, font="arial 13")
+# Search_entry.place(x=600, y=65)
 
+# Srch = Button(root, text="Search", compound=LEFT, width=8, bg='#68ddfa', font='arial 13 bold',command=Search)
+# Srch.place(x=780,y=63)
+#
+
+search_var = StringVar()  # create a separate StringVar variable for the Entry widget
+search_entry = Entry(root, textvariable=search_var, width=15, bd=2, font="arial 13")
+search_entry.place(x=600, y=65)
+
+srch = Button(root, text="Search", compound=LEFT, width=8, bg='#68ddfa', font='arial 13 bold', command=search)
+srch.place(x=780, y=63)
 
 #===================================================================================
 # Left UI frame
@@ -419,15 +453,17 @@ f= Frame(root, bd=3,bg="black", width=150,height=150,relief=GROOVE)
 f.place(x=15,y=130)
 # img = PhotoImage(file=r"C:\Users\William\Desktop\Project\kdd.png")
 img = PhotoImage(file="kdd.png")
-# lbl = Label(f, bg="black"m image=img).place(x=0, y=0)
 lbl = Label(f, bg="black", image=img)
 lbl.place(x=0, y=0)
 
 
 
-Button(root, text="Upload", width=14, height=2, font="arial 12 bold",bg="lightblue", command= showimage).place(x=15, y=300)
+UploadButton =Button(root, text="Upload", width=14, height=2, font="arial 12 bold",bg="lightblue", command= showimage)
+UploadButton.place(x=15, y=300)
+
 SaveButton = Button(root, text="Save", width=14, height=2, font="arial 12 bold",bg="lightgreen", command= Save)
 SaveButton.place(x=15, y=360)
+
 Button(root, text="Reset", width=14, height=2, font="arial 12 bold",bg="lightpink", command= Reset).place(x=15, y=420)
 Button(root, text="Exit", width=14, height=2, font="arial 12 bold",bg="grey", command= Exit).place(x=15, y=480)
 
@@ -453,20 +489,32 @@ Label(obj, text="Telephone:", font="arial 13", bg = framebg , fg=framefg).place(
 
 #left input box
 Lab = StringVar()
-Entry(obj, textvariable = Lab, width=15, font="arial 13").place(x=350, y=160)
+Lab_entry = Entry(obj, textvariable = Lab, width=15, font="arial 13")
+Lab_entry.place(x=350, y=160)
+
+
 Student_ID = StringVar()
-Entry(obj, textvariable = Student_ID, width=15, font="arial 13").place(x=350, y=190)
+Student_ID_entry = Entry(obj, textvariable = Student_ID, width=15, font="arial 13")
+Student_ID_entry.place(x=350, y=190)
+
+
 Name = StringVar()
-Entry(obj, textvariable = Name, width=15, font="arial 13").place(x=350, y=220)
+Name_entry = Entry(obj, textvariable = Name, width=15, font="arial 13")
+Name_entry.place(x=350, y=220)
+
 
 #right input box
 Line = StringVar()
-Entry(obj, textvariable = Line, width=15, font="arial 13").place(x=710, y=160)
-Email = StringVar()
-Entry(obj, textvariable = Email, width=15, font="arial 13").place(x=710, y=190)
-Telephone = StringVar()
-Entry(obj, textvariable = Telephone, width=15, font="arial 13").place(x=710, y=220)
+Line_entry = Entry(obj, textvariable = Line, width=15, font="arial 13")
+Line_entry.place(x=710, y=160)
 
+Email = StringVar()
+Email_entry = Entry(obj, textvariable = Email, width=15, font="arial 13")
+Email_entry.place(x=710, y=190)
+
+Telephone = StringVar()
+Telephone_entry = Entry(obj, textvariable = Telephone, width=15, font="arial 13")
+Telephone_entry.place(x=710, y=220)
 
 #===================================================================================
 # Lower right frame
@@ -480,9 +528,9 @@ obj2 = LabelFrame(root, text="Equipment Pickup List", font=20,bd=2,width=700, bg
 Label(obj2, text="1、Arduino板*2", font="arial 10", bg = framebg, fg = framefg).place(x=220, y=290)
 Label(obj2, text="2、Arduino電源線*2", font="arial 10", bg = framebg, fg = framefg).place(x=220, y=310)
 Label(obj2, text="3、Arduino擴充版", font="arial 10", bg = framebg , fg=framefg).place(x=220, y=330)
-Label(obj2, text="4、充電電池*2", font="arial 10", bg = framebg, fg = framefg).place(x=220, y=350)
+Label(obj2, text="4、充電電池&盒*2", font="arial 10", bg = framebg, fg = framefg).place(x=220, y=350)
 Label(obj2, text="5、電池充電器*1", font="arial 10", bg = framebg, fg = framefg).place(x=220, y=370)
-Label(obj2, text="6、電池(2&4)盒各*1", font="arial 10", bg = framebg , fg=framefg).place(x=220, y=390)
+Label(obj2, text="6、行動電源*1", font="arial 10", bg = framebg , fg=framefg).place(x=220, y=390)
 Label(obj2, text="7、馬達控制器*1", font="arial 10", bg = framebg, fg = framefg).place(x=220, y=410)
 Label(obj2, text="8、小車馬達*2", font="arial 10", bg = framebg, fg = framefg).place(x=220, y=430)
 Label(obj2, text="9、小車輔助輪*1", font="arial 10", bg = framebg , fg=framefg).place(x=220, y=450)
