@@ -24,11 +24,12 @@
 # Windows
 pip install -r requirements.txt
 python "Requisition List System.py"
+```
 
+```bash=
 # Linux
 pip install -r requirements.txt
 python Requisition\ List\ System.py
-
 ```
 
 ## 五、未來發展
