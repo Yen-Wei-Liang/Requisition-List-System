@@ -299,7 +299,6 @@ def Reset():
     Name.set('')
     Lab.set('')
     Student_ID.set('')
-#     Search.set('')
     Line.set('')
     Email.set('')
     Telephone.set('')
@@ -355,12 +354,6 @@ def search():
         else:
             messagebox.showerror("Invalid", "Invalid registeration number!!!")
             return
-
-#     try:
-#         print(str(num))
-#     except:
-# #         num = None
-#         messagebox.showerror("Invalid", "Invalid registeration number!!!")
 
     if reg_number is not None:    
         x1 = sheet.cell(row=int(reg_number), column=1).value # lab
